@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="pandit.css" rel="stylesheet">
+</head>
+<body>
+    <form action="#" class="container">
+        <h1>Register Yourself</h1>
+        <div class="box">
+            <div class="left">
+                <p><label>Name:</label>
+                    <input type="text" name="name" id="Name" required></p>
+                <p><label>Qualification:</label>
+                    <select name="edu" id="edu">
+                        <option value="No formal education">No formal education</option>
+                        <option value="Primary education">Primary education</option>
+                        <option value="Secondary education">Secondary education or high school</option>
+                        <option value="GED">GED</option>
+                        <option value="Vocational qualification">Vocational qualification</option>
+                        <option value="Bachelor's degree">Bachelor's degree</option>
+                        <option value="Master's degree">Master's degree</option>
+                        <option value="Doctorate or higher">Doctorate or higher</option>
+                    </select></p>
+                <p><label>Gender:</label>
+                    <select name="gender" id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                          
+                 </p>
+                 <p><label>Address:</label>
+                    <input type="text"  class="add" name="add" id="add" required></p>
+                <p><label>Email:</label>
+                    <input type="email"  name="email" id="Email" required></p>
+                <p><label>Password:</label> 
+                    <input type="password" name="password" id="Password" required></p>
+                
+            
+                <p><label>phone: </label> 
+                    <input type="phone" id="phone" name="phone" pattern="[0-9]{10}"></p>
+                <div class="flex-parent jc-center">
+                    <button class="s1" type="button" onclick="submitForm()" >Submit</button>
+                    <button class="s2" type="Reset">reset</button> 
+                    <button class="s3">  
+                         <a href="logo.html">Back</a>
+                    </button>
+                 </div>
+            </div>
+            <div class="right">
+                <p><label>upload img:</label>
+                    <input type="file" id="avatar" name="avatar"  
+                       onchange="displayprofilepic()">
+                    <img src="#" alt="profile photo" style="display: none;" id="profilepic"  >
+                </p>
+            </div> 
+        </div>
+         
+    </form>
+    <script>
+        function displayprofilepic(){
+            const input= document.getElementById('avatar');
+            const img= document.getElementById('profilepic');
+
+            if(input.files && input.files[0]){
+                const reader = new FileReader();
+
+                reader.onload = function(e){
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function submitForm(){
+            const formData = new FormData(document.getElementById
+            ('profileForm'));
+
+            for(const pair of formData.entries()){
+                console.log(pair[0] + ':' + pair[1]);
+            }
+        }
+    </script>
+</body>
+</html>
